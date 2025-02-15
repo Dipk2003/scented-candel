@@ -7,25 +7,21 @@ import "swiper/css/navigation";
 
 const slides = [
   {
-    image: "/images/candle1.jpg",
+    image: "images/candle1.jpg",
     title: "Vanilla Scented Candle",
     subtitle: "Soothing Aroma for a Relaxing Ambience",
   },
   {
-    image: "/images/candle2.jpg",
+    image: "images/candle2.jpg",
     title: "Lavender Bliss",
     subtitle: "Unwind with the Fresh Scent of Lavender",
   },
   {
-    image: "/images/candle3.jpg",
+    image: "images/candle3.jpg",
     title: "Rose Petal Glow",
     subtitle: "Experience the Elegance of Floral Fragrances",
   },
-  {
-    image: "/images/candle4.jpg",
-    title: "Ocean Breeze",
-    subtitle: "Breathe in the Refreshing Coastal Vibes",
-  },
+  
 ];
 
 const HeroSection = () => {

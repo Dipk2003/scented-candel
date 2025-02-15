@@ -8,7 +8,7 @@ const Footer = () => {
 
         {/* 🌟 Brand Description Section */}
         <div>
-          <h2 className="text-lg font-bold">Your Brand Name</h2>
+          <h2 className="text-lg font-bold">Scented Candle</h2>
           <p className="text-sm mt-2">
             Your brand's introduction goes here. Highlight your scented candles, premium fragrances,
             and how they enhance ambiance and relaxation.

@@ -1,9 +1,13 @@
-"use client"; // ✅ Add this line at the top
+export default function ProductCard({ product }) {
+  console.log("📦 ProductCard received product:", product);
 
-import { useCartStore } from "../store/useCartStore"; // Import cart state
-
-const ProductCard = ({ product }) => {
-  const addToCart = useCartStore((state) => state.addToCart);
+  if (!product) {
+    return (
+      <p className="text-red-500 text-center">
+        ❌ Error: Product not found!
+      </p>
+    );
+  }
 
   return (
     <div className="border p-4 rounded-lg shadow-md text-center">
@@ -13,15 +17,10 @@ const ProductCard = ({ product }) => {
         className="w-full h-40 object-cover mb-4"
       />
       <h2 className="text-lg font-semibold">{product.name}</h2>
-      <p className="text-gray-700">₹{product.price}</p>
-      <button
-        onClick={() => addToCart(product)} // ✅ Add to cart working now
-        className="mt-3 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-      >
-        Add to Cart
+      <p className="text-gray-600">₹{product.price}</p>
+      <button className="mt-2 px-4 py-2 bg-black text-white rounded-md">
+        Buy Now
       </button>
     </div>
   );
-};
-
-export default ProductCard;
+}

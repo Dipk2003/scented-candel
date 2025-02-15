@@ -4,25 +4,25 @@ export default function Shop() {
   const products = [
     {
       id: 1,
-      image: "https://via.placeholder.com/150", // Placeholder image
+      image: "/images/p1.jpg", // Placeholder image
       name: "Vanilla Scented Candle",
       price: 499,
     },
     {
       id: 2,
-      image: "https://via.placeholder.com/150",
+      image: "/images/p2.jpg",
       name: "Lavender Bliss",
       price: 599,
     },
     {
       id: 3,
-      image: "https://via.placeholder.com/150",
+      image: "/images/p3.jpg",
       name: "Rose Petal Glow",
       price: 699,
     },
     {
       id: 4,
-      image: "https://via.placeholder.com/150",
+      image: "/images/p4.jpg",
       name: "Ocean Breeze",
       price: 799,
     },
