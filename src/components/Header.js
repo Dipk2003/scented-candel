@@ -10,24 +10,27 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-gray-900 text-white py-4 px-6 shadow-md">
+    <header className="bg-gray-900 text-white py-4 px-6 shadow-md fixed w-full top-0 z-50">
       <div className="container mx-auto flex justify-between items-center">
+        {/* Logo */}
+        <Link href="/" className="text-2xl font-extrabold tracking-wide text-white hover:text-gray-300 transition">
+          Scented Candles
+        </Link>
         
-        <Link href="/" className="text-2xl font-bold tracking-wide">Scented Candles</Link>
-
         {/* Mobile Menu Button */}
         <button 
-          className="lg:hidden text-2xl" 
+          className="lg:hidden text-2xl text-white" 
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <FiX /> : <FiMenu />}
         </button>
 
         {/* Navigation Links */}
-        <nav className={`lg:flex space-x-6 font-medium relative ${mobileMenuOpen ? "absolute top-16 left-0 w-full bg-gray-900 p-4 z-50" : "hidden lg:flex"}`}>
-          <ul className="flex flex-col lg:flex-row lg:space-x-6">
-            <li><Link href="/" className="hover:text-gray-300 block py-2">Home</Link></li>
-
+        <nav className={`lg:flex items-center ${mobileMenuOpen ? "absolute top-16 left-0 w-full bg-gray-900 p-6" : "hidden lg:flex"}`}>
+          <ul className="flex flex-col lg:flex-row lg:space-x-8 text-lg font-medium">
+            <li><Link href="/" className="hover:text-gray-300 py-2 block">Home</Link></li>
+            
+            {/* Categories Dropdown */}
             <li 
               className="relative flex items-center gap-1 cursor-pointer"
               onMouseEnter={() => setShowDropdown(true)}
@@ -36,34 +39,37 @@ const Header = () => {
               <span className="hover:text-gray-300 flex items-center gap-1 py-2">
                 Categories <FiChevronDown className="text-sm" />
               </span>
-
               {showDropdown && (
-                <ul className="absolute left-0 top-10 bg-white text-gray-900 shadow-lg rounded-lg mt-2 w-52 z-50 border transition-all duration-200 lg:static lg:w-auto lg:bg-transparent lg:text-white">
-                  {["Scented Candles", "Gift Sets", "Decorative Candles"].map((category, index) => (
+                <ul className="absolute left-0 top-10 bg-white text-gray-900 shadow-lg rounded-lg mt-2 w-56 border lg:w-auto lg:bg-gray-800 lg:text-white transition-all duration-200">
+                  {[
+                    { name: "Scented Candles", link: "/categories/scented-candles" },
+                    { name: "Gift Sets", link: "/categories/gift-sets" },
+                    { name: "Decorative Candles", link: "/categories/decorative-candles" }
+                  ].map((item, index) => (
                     <li key={index}>
-                      <Link href={`/categories/${category.toLowerCase().replace(" ", "-")}`} 
-                        className="block px-4 py-2 hover:bg-gray-100 first:rounded-t-lg last:rounded-b-lg lg:hover:bg-transparent lg:hover:text-gray-300"
+                      <Link href={item.link} 
+                        className="block px-5 py-3 hover:bg-gray-100 rounded-lg lg:hover:bg-gray-700 lg:hover:text-gray-300"
                       >
-                        {category}
+                        {item.name}
                       </Link>
                     </li>
                   ))}
                 </ul>
               )}
             </li>
-
-            <li><Link href="/candles" className="hover:text-gray-300 block py-2">Candles</Link></li>
-            <li><Link href="/gift-sets" className="hover:text-gray-300 block py-2">Gift Sets</Link></li>
-            <li><Link href="/sale" className="text-red-400 hover:text-red-300 block py-2">Sale</Link></li>
+            
+            <li><Link href="/candles" className="hover:text-gray-300 py-2 block">Candles</Link></li>
+            <li><Link href="/gift-sets" className="hover:text-gray-300 py-2 block">Gift Sets</Link></li>
+            <li><Link href="/sale" className="text-red-400 hover:text-red-300 py-2 block">Sales</Link></li>
           </ul>
         </nav>
 
         {/* Cart Icon */}
         <div className="relative">
-          <Link href="/cart" className="relative text-2xl hover:text-gray-300">
+          <Link href="/cart" className="relative text-3xl text-white hover:text-gray-300">
             <FiShoppingCart />
             {cart.length > 0 && (
-              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1 rounded-full">
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">
                 {cart.length}
               </span>
             )}
@@ -75,4 +81,3 @@ const Header = () => {
 };
 
 export default Header;
-
