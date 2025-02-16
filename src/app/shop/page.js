@@ -7,30 +7,10 @@ export default function Shop() {
   const router = useRouter();
 
   const products = [
-    {
-      id: 1,
-      image: "/images/p1.jpg",
-      name: "Vanilla Scented Candle",
-      price: 499,
-    },
-    {
-      id: 2,
-      image: "/images/p2.jpg",
-      name: "Lavender Bliss",
-      price: 599,
-    },
-    {
-      id: 3,
-      image: "/images/p3.jpg",
-      name: "Rose Petal Glow",
-      price: 699,
-    },
-    {
-      id: 4,
-      image: "/images/p4.jpg",
-      name: "Ocean Breeze",
-      price: 799,
-    },
+    { id: 1, image: "/images/p1.jpg", name: "Vanilla Scented Candle", price: 499 },
+    { id: 2, image: "/images/p2.jpg", name: "Lavender Bliss", price: 599 },
+    { id: 3, image: "/images/p3.jpg", name: "Rose Petal Glow", price: 699 },
+    { id: 4, image: "/images/p4.jpg", name: "Ocean Breeze", price: 799 },
   ];
 
   const handleAddToCart = (product) => {
@@ -38,7 +18,7 @@ export default function Shop() {
     if (!isAlreadyInCart) {
       addToCart(product);
     } else {
-      router.push("/cart"); // Redirect to cart if already added
+      router.push("/cart");
     }
   };
 
@@ -48,43 +28,35 @@ export default function Shop() {
   };
 
   return (
-    <section className="py-10 px-4 sm:px-6 md:px-8 lg:px-10">
-      {/* Made padding responsive */}
-      <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6">
-        {/* Adjusted text size for mobile */}
-        Shop Our Best-Selling Candles
+    <section className="py-20 px-6 sm:px-8 md:px-12 lg:px-16">
+      <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
+        Shop Our Best-Selling Candles 🕯️
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-        {/* Adjusted grid gap for better spacing */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product) => (
           <div
             key={product.id}
-            className="border p-3 sm:p-4 rounded-lg shadow-lg text-center"
+            className="bg-white border border-gray-200 p-5 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02] text-center"
           >
-            {/* Adjusted padding for mobile view */}
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-32 sm:h-40 object-cover mb-3 sm:mb-4 rounded"
+              className="w-full h-48 object-cover mb-4 rounded-lg"
             />
-            {/* Adjusted image height for smaller screens */}
-            <h2 className="text-base sm:text-lg font-semibold">{product.name}</h2>
-            {/* Adjusted text size for mobile */}
-            <p className="text-gray-600 mb-2">₹{product.price}</p>
-            <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4 mt-3 sm:mt-4">
-              {/* Changed buttons to stack vertically on mobile */}
+            <h2 className="text-xl font-semibold text-gray-900">{product.name}</h2>
+            <p className="text-gray-600 text-lg font-medium mb-3">₹{product.price}</p>
+            <div className="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4 mt-4">
               <button
                 onClick={() => handleAddToCart(product)}
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full sm:w-auto"
+                className="bg-gray-800 text-white px-6 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-gray-700 w-full sm:w-auto"
               >
-                {/* Made buttons full-width on mobile */}
-                Add to Cart
+                🛒 Add to Cart
               </button>
               <button
                 onClick={() => handleBuyNow(product)}
-                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 w-full sm:w-auto"
+                className="bg-green-600 text-white px-6 py-2 rounded-lg font-medium transition-all duration-300 hover:bg-green-500 w-full sm:w-auto"
               >
-                Buy Now
+                🚀 Buy Now
               </button>
             </div>
           </div>

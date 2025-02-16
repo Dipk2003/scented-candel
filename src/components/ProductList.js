@@ -1,4 +1,3 @@
-
 import ProductCard from "./ProductCard";
 
 const products = [
@@ -9,20 +8,18 @@ const products = [
 ];
 
 export default function ProductList() {
-  console.log("✅ ProductList Rendering...");
-  console.log("🛒 Products Array:", products);
-
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold text-center mb-6">
-        Shop Our Best-Selling Candles
-      </h1>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {products.map((product, index) => {
-          console.log(`🔥 Rendering Product ${index + 1}:`, product); // Debug each product
-          return <ProductCard key={product.id} product={product} />;
-        })}
+    <section className="py-12 bg-gray-50">
+      <div className="container mx-auto px-6 lg:px-12">
+        <h1 className="text-3xl font-bold text-center mb-10 text-gray-800">
+          Shop Our Best-Selling Candles
+        </h1>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
