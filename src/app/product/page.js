@@ -1,11 +1,13 @@
 import HeroSection from "../../components/HeroSection";
 import ProductCard from "../../components/ProductCard";
 
-export default function prodc() {
-  const products = [
-    { id: 1, image: "/images/p1.jpg", title: "Vanilla Candle", price: 499 },
-    { id: 2, image: "/images/p2.jpg", title: "Lavender Bliss", price: 599 },
-  ];
+
+const products = [
+  { id: 1, image: "/images/p1.jpg", title: "Vanilla Candle", price: 499 },
+  { id: 2, image: "/images/p2.jpg", title: "Lavender Bliss", price: 599 },
+]
+export default function Shop() {
+
   return (
     <div className="px-6">
       <HeroSection />

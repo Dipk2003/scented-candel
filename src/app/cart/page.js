@@ -1,24 +1,82 @@
-
 "use client";
 import { useCartStore } from "@/store/useCartStore";
 import Link from "next/link";
+import Image from "next/image";
+
 
 export default function CartPage() {
-  const { cart, removeFromCart, clearCart } = useCartStore();
+  const { cart, removeFromCart, clearCart, updateQuantity } = useCartStore();
+
+  // Calculate total price
+  const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="container mx-auto py-12 px-6">
+      <h1 className="text-3xl font-bold text-center mb-6">🛒 Your Shopping Cart</h1>
+
       {cart.length === 0 ? (
-        <p>Your cart is empty. <Link href="/categories" className="text-blue-500">Shop now</Link></p>
+        <div className="text-center mt-10">
+          <p className="text-lg text-gray-600">Your cart is empty.</p>
+          <Link href="/categories" className="text-blue-600 hover:underline text-lg font-semibold">
+            Continue Shopping →
+          </Link>
+        </div>
       ) : (
-        <div>
+        <div className="max-w-3xl mx-auto bg-white shadow-lg rounded-lg p-6">
           {cart.map((item, index) => (
-            <div key={index} className="border-b py-2 flex justify-between">
-              <p>{item.name} - ₹{item.price}</p>
-              <button onClick={() => removeFromCart(item.id)}>Remove</button>
+            <div key={index} className="flex items-center justify-between border-b py-4">
+              <div className="flex items-center space-x-4">
+                <Image src={item.image} alt={item.name} width={60} height={60} className="rounded-lg shadow" />
+                <div>
+                  <p className="text-lg font-semibold">{item.name}</p>
+                  <p className="text-gray-500">₹{item.price}</p>
+                </div>
+              </div>
+              <div className="flex items-center space-x-2">
+                <button
+                  onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                  className="bg-gray-300 text-black px-2 py-1 rounded-md hover:bg-gray-400 transition"
+                  disabled={item.quantity === 1}
+                >
+                  ➖
+                </button>
+                <span className="text-lg font-semibold">{item.quantity}</span>
+                <button
+                  onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                  className="bg-gray-300 text-black px-2 py-1 rounded-md hover:bg-gray-400 transition"
+                >
+                  ➕
+                </button>
+              </div>
+              <button
+                onClick={() => removeFromCart(item.id)}
+                className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition"
+              >
+                Remove
+              </button>
             </div>
           ))}
-          <button onClick={clearCart} className="mt-4 bg-red-500 text-white px-4 py-2 rounded">Clear Cart</button>
+
+          {/* Cart Total Section */}
+          <div className="flex justify-between items-center mt-6 border-t pt-4">
+            <p className="text-xl font-semibold">Total:</p>
+            <p className="text-xl font-bold">₹{totalPrice}</p>
+          </div>
+
+          {/* Cart Actions */}
+          <div className="mt-6 flex justify-between">
+            <button
+              onClick={clearCart}
+              className="bg-gray-700 text-white px-4 py-2 rounded-md hover:bg-gray-800 transition"
+            >
+              Clear Cart
+            </button>
+            <Link href="/checkout">
+              <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
+                Proceed to Checkout →
+              </button>
+            </Link>
+          </div>
         </div>
       )}
     </div>
