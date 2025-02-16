@@ -94,7 +94,7 @@ export default function CheckoutPage() {
 
         {/* Back to Shop */}
         <button
-          onClick={() => router.push("/shop")}
+          onClick={() => router.push("/product")}
           className="mt-6 w-full text-blue-500 font-semibold hover:underline text-center"
         >
           &larr; Back to Shop
