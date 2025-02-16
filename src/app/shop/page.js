@@ -2,7 +2,6 @@
 import { useCartStore } from "@/store/useCartStore";
 import { useRouter } from "next/navigation";
 
-
 export default function Shop() {
   const { cart, addToCart } = useCartStore();
   const router = useRouter();
@@ -49,30 +48,41 @@ export default function Shop() {
   };
 
   return (
-    <section className="py-10 px-6">
-      <h1 className="text-3xl font-bold text-center mb-6">
+    <section className="py-10 px-4 sm:px-6 md:px-8 lg:px-10">
+      {/* Made padding responsive */}
+      <h1 className="text-2xl sm:text-3xl font-bold text-center mb-6">
+        {/* Adjusted text size for mobile */}
         Shop Our Best-Selling Candles
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        {/* Adjusted grid gap for better spacing */}
         {products.map((product) => (
-          <div key={product.id} className="border p-4 rounded-lg shadow-lg text-center">
+          <div
+            key={product.id}
+            className="border p-3 sm:p-4 rounded-lg shadow-lg text-center"
+          >
+            {/* Adjusted padding for mobile view */}
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-40 object-cover mb-4 rounded"
+              className="w-full h-32 sm:h-40 object-cover mb-3 sm:mb-4 rounded"
             />
-            <h2 className="text-lg font-semibold">{product.name}</h2>
+            {/* Adjusted image height for smaller screens */}
+            <h2 className="text-base sm:text-lg font-semibold">{product.name}</h2>
+            {/* Adjusted text size for mobile */}
             <p className="text-gray-600 mb-2">₹{product.price}</p>
-            <div className="flex justify-center space-x-4 mt-4">
+            <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4 mt-3 sm:mt-4">
+              {/* Changed buttons to stack vertically on mobile */}
               <button
                 onClick={() => handleAddToCart(product)}
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full sm:w-auto"
               >
+                {/* Made buttons full-width on mobile */}
                 Add to Cart
               </button>
               <button
                 onClick={() => handleBuyNow(product)}
-                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 w-full sm:w-auto"
               >
                 Buy Now
               </button>
