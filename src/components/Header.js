@@ -36,15 +36,17 @@ const Header = () => {
               onMouseEnter={() => setShowDropdown(true)}
               onMouseLeave={() => setShowDropdown(false)}
             >
-              <span className="hover:text-gray-300 flex items-center gap-1 py-2">
+             <Link href="/categories">
+             <span className="hover:text-gray-300 flex items-center gap-1 py-2">
                 Categories <FiChevronDown className="text-sm" />
               </span>
+             </Link> 
               {showDropdown && (
                 <ul className="absolute left-0 top-10 bg-white text-gray-900 shadow-lg rounded-lg mt-2 w-56 border lg:w-auto lg:bg-gray-800 lg:text-white transition-all duration-200">
                   {[
-                    { name: "Scented Candles", link: "/categories/scented-candles" },
-                    { name: "Gift Sets", link: "/categories/gift-sets" },
-                    { name: "Decorative Candles", link: "/categories/decorative-candles" }
+                    { name: "Scented Candles", link: "/category/Scented-Candles" },
+                    { name: "Decorative Candles", link: "/category/Decorative-Candles" },
+                    { name: "Gift Sets", link: "/category/Gift-Sets" }
                   ].map((item, index) => (
                     <li key={index}>
                       <Link href={item.link} 
@@ -59,7 +61,7 @@ const Header = () => {
             </li>
             
             <li><Link href="/candles" className="hover:text-gray-300 py-2 block">Candles</Link></li>
-            <li><Link href="/gift-sets" className="hover:text-gray-300 py-2 block">Gift Sets</Link></li>
+            <li><Link href="/category/Gift-Sets" className="hover:text-gray-300 py-2 block">Gift Sets</Link></li>
             <li><Link href="/sale" className="text-red-400 hover:text-red-300 py-2 block">Sales</Link></li>
           </ul>
         </nav>
