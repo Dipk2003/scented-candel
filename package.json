@@ -1,7 +1,22 @@
 {
-  "name": "scented-candles",
+  "name": "@dipk2003/scented-candles",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "description": "A fully-featured, production-ready e-commerce platform for selling scented candles online built with Next.js 15, React 19, and Supabase",
+  "keywords": ["ecommerce", "nextjs", "react", "supabase", "tailwindcss", "razorpay", "candles"],
+  "author": "Dipanshu Pandey <dipk2003@example.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/Dipk2003/scented-candel#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dipk2003/scented-candel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Dipk2003/scented-candel/issues"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
