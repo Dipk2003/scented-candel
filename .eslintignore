@@ -1,0 +1,30 @@
+# Build outputs
+.next/
+out/
+build/
+dist/
+
+# Node modules
+node_modules/
+
+# Environment files
+.env*
+
+# Configuration files
+next.config.mjs
+tailwind.config.mjs
+postcss.config.mjs
+tsconfig.json
+
+# Generated files
+*.log
+.DS_Store
+.vercel
+.turbo
+
+# Database files
+*.sql
+
+# Documentation
+*.md
+RELEASE_NOTES.md

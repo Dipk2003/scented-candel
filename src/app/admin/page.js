@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
-// import { useUser, SignInButton, UserButton } from "@clerk/nextjs";
+import { useUser, SignInButton, UserButton } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 
 const supabase = createClient(
@@ -11,13 +11,13 @@ const supabase = createClient(
 );
 
 const AdminPanel = () => {
-  // const { isLoaded, isSignedIn, user } = useUser();
+  const { isLoaded, isSignedIn, user } = useUser();
   const router = useRouter();
   
-  // For development - bypass authentication
-  const isLoaded = true;
-  const isSignedIn = true;
-  const user = { firstName: "Developer", emailAddresses: [{ emailAddress: "dkpandeyking123@gmail.com" }] };
+  // For development - uncomment below to bypass authentication
+  // const isLoaded = true;
+  // const isSignedIn = true;
+  // const user = { firstName: "Developer", emailAddresses: [{ emailAddress: "dkpandeyking123@gmail.com" }] };
   const [products, setProducts] = useState([]);
   const [sales, setSales] = useState([]);
   const [activeSection, setActiveSection] = useState("products");
